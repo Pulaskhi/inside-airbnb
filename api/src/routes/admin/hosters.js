@@ -3,6 +3,7 @@ const router = express.Router()
 const controller = require('../../controllers/admin/hoster-controller.js')
 
 router.post('/', controller.create)
+router.post('/bulk-create', controller.bulkCreate)
 router.get('/', controller.findAll)
 router.get('/:id', controller.findOne)
 router.put('/:id', controller.update)

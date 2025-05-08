@@ -1,141 +1,118 @@
 module.exports = function (sequelize, DataTypes) {
-    const Model = sequelize.define('Hoster',
-      {
-        id: {
-          type: DataTypes.INTEGER,
-          autoIncrement: true,
-          primaryKey: true,
-          allowNull: false
-        },
-        hostId: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        listingUrl: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        hostUrl: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        hostSince: {
-          type: DataTypes.DATE,
-          allowNull: false
-        },
-        hostName: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        hostLocation: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        neighburhood: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        roomType: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        propertyType: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        bedrooms: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        minimumNights: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        latitude: {
-          type: DataTypes.FLOAT,
-          allowNull: false
-        },
-        longitude: {
-          type: DataTypes.FLOAT,
-          allowNull: false
-        },
-        beds: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        reviewScoresRating: {
-          type: DataTypes.FLOAT,
-          allowNull: false
-        },
-        numberOfReviews: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        availability30: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        availability60: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        availability90: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        availability365: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        price: {
-          type: DataTypes.FLOAT,
-          allowNull: false
-        },
-        accommodates: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        numberOfReviewsLtm: {
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        createdAt: {
-          type: DataTypes.DATE,
-          get () {
-            return this.getDataValue('createdAt')
-              ? this.getDataValue('createdAt').toISOString().split('T')[0]
-              : null
-          }
-        },
-        updatedAt: {
-          type: DataTypes.DATE,
-          get () {
-            return this.getDataValue('updatedAt')
-              ? this.getDataValue('updatedAt').toISOString().split('T')[0]
-              : null
-          }
+  const Model = sequelize.define('Hoster',
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+      },
+      hostId: {
+        type: DataTypes.INTEGER
+      },
+      listingUrl: {
+        type: DataTypes.STRING
+      },
+      hostUrl: {
+        type: DataTypes.STRING
+      },
+      hostSince: {
+        type: DataTypes.DATEONLY
+      },
+      hostName: {
+        type: DataTypes.STRING
+      },
+      hostLocation: {
+        type: DataTypes.STRING
+      },
+      neighburhood: {
+        type: DataTypes.STRING
+      },
+      latitude: {
+        type: DataTypes.FLOAT
+      },
+      longitude: {
+        type: DataTypes.FLOAT
+      },
+      roomType: {
+        type: DataTypes.STRING
+      },
+      propertyType: {
+        type: DataTypes.STRING
+      },
+      bedrooms: {
+        type: DataTypes.INTEGER
+      },
+      minimumNights: {
+        type: DataTypes.INTEGER
+      },
+      beds: {
+        type: DataTypes.INTEGER
+      },
+      reviewScoresRating: {
+        type: DataTypes.FLOAT
+      },
+      numberOfReviews: {
+        type: DataTypes.INTEGER
+      },
+      availability30: {
+        type: DataTypes.INTEGER
+      },
+      availability60: {
+        type: DataTypes.INTEGER
+      },
+      availability90: {
+        type: DataTypes.INTEGER
+      },
+      availability365: {
+        type: DataTypes.INTEGER
+      },
+      price: {
+        type: DataTypes.DECIMAL(10, 2)
+      },
+      accommodates: {
+        type: DataTypes.INTEGER
+      },
+      numberOfReviewsLtm: {
+        type: DataTypes.INTEGER
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        get () {
+          return this.getDataValue('createdAt')
+            ? this.getDataValue('createdAt').toISOString().split('T')[0]
+            : null
         }
-      }, {
-        sequelize,
-        tableName: 'hosters',
-        timestamps: true,
-        paranoid: true,
-        indexes: [
-          {
-            name: 'PRIMARY',
-            unique: true,
-            using: 'BTREE',
-            fields: [
-              { name: 'id' }
-            ]
-          }
-        ]
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        get () {
+          return this.getDataValue('updatedAt')
+            ? this.getDataValue('updatedAt').toISOString().split('T')[0]
+            : null
+        }
       }
-    )
-  
-    Model.associate = function (models) {
-  
+    }, {
+      sequelize,
+      tableName: 'hosters',
+      timestamps: true,
+      paranoid: true,
+      indexes: [
+        {
+          name: 'PRIMARY',
+          unique: true,
+          using: 'BTREE',
+          fields: [
+            { name: 'id' }
+          ]
+        }
+      ]
     }
-  
-    return Model
+  )
+
+  Model.associate = function (models) {
+
   }
+
+  return Model
+}

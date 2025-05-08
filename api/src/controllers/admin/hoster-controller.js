@@ -14,6 +14,18 @@ exports.create = async (req, res, next) => {
   }
 }
 
+exports.bulkCreate = async (req, res, next) => {
+  try {
+    const data = await Hoster.bulkCreate(req.body)
+    res.status(200).send(data)
+  } catch (err) {
+    if (err.name === 'SequelizeValidationError') {
+      err.statusCode = 422
+    }
+    next(err)
+  }
+}
+
 exports.findAll = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1
@@ -27,13 +39,11 @@ exports.findAll = async (req, res, next) => {
       }
     }
 
-    const condition = Object.keys(whereStatement).length > 0
-      ? { [Op.and]: [whereStatement] }
-      : {}
+    const condition = Object.keys(whereStatement).length > 0 ? { [Op.and]: [whereStatement] } : {}
 
     const result = await Hoster.findAndCountAll({
       where: condition,
-      attributes: ['id', 'hostId','latitude', 'createdAt', 'updatedAt'],
+      attributes: ['id', 'hostId', 'hostUrl', 'latitude', 'longitude', 'createdAt', 'updatedAt'],
       limit,
       offset,
       order: [['createdAt', 'DESC']]
