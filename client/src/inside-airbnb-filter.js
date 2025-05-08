@@ -21,13 +21,15 @@
         bedrooms: element.bedrooms,
         minimumNights: element.minimum_nights,
         beds: element.beds,
+        latitude: element.latitude,
+        longitude: element.longitude,
         reviewScoresRating: element.review_scores_rating,
         numberOfReviews: element.number_of_reviews,
         availability30: element.availability_30,
         availability60: element.availability_60,
         availability90: element.availability_90,
         availability365: element.availability_365,
-        price: element.price,
+        price: element.price.replace('$', ''),
         accommodates: element.accommodates,
         numberOfReviewsLtm: element.number_of_reviews_ltm
       }

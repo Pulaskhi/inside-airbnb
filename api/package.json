@@ -1,0 +1,31 @@
+{
+  "name": "inside-airbnb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --env-file=.env index.js",
+    "dev": "node --env-file=.env --watch index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pulaskhi/telegram-bot.git"
+  },
+  "author": "Marcos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pulaskhi/telegram-bot/issues"
+  },
+  "homepage": "https://github.com/Pulaskhi/telegram-bot#readme",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.24.0",
+    "neostandard": "^0.12.1",
+    "sequelize-cli": "^6.6.2"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "sequelize": "^6.37.7"
+  }
+}
